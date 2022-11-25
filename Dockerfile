@@ -27,4 +27,5 @@ RUN apt-get update && apt-get install -y git && git clone https://github.com/gia
     && cd SCRFD-LPD \
     && pip install -r requirements/build.txt \
     && pip install -v -e . \
+    && pip install -r requirements/optional.txt \
     && pip install scipy
