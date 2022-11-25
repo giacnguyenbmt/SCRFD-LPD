@@ -14,7 +14,7 @@ dist_params = dict(backend='nccl')
 log_level = 'INFO'
 # load_from = 'work_dirs/scrfd_crowdhuman_500m_fe/epoch_320.pth'
 load_from = None
-resume_from = 'work_dirs/scrfd_crowdhuman_2.5g_fe_aug/epoch_50.pth'
+resume_from = None # 'work_dirs/scrfd_crowdhuman_2.5g_fe_aug/epoch_50.pth'
 workflow = [('train', 1)]
 dataset_type = 'RetinaVehicleDataset'
 data_root = 'data/vehicle_data/'

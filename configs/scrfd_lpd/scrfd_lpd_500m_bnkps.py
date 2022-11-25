@@ -14,7 +14,7 @@ dist_params = dict(backend='nccl')
 log_level = 'INFO'
 # load_from = 'work_dirs/scrfd_crowdhuman_500m_fe/epoch_320.pth'
 load_from = None
-resume_from = 'work_dirs/scrfd_lpd_500m_bnkps/epoch_575.pth'
+resume_from = None # 'work_dirs/scrfd_lpd_500m_bnkps/epoch_575.pth'
 workflow = [('train', 1)]
 dataset_type = 'RetinaFaceDataset'
 data_root = 'data/LPD/'
@@ -108,8 +108,8 @@ albu_train_transforms=[
         #     p=1),
     ]
 data = dict(
-    samples_per_gpu=64,
-    workers_per_gpu=4,
+    samples_per_gpu=16, # 64,
+    workers_per_gpu=8, # 4,
     train=dict(
         type='RetinaFaceDataset',
         ann_file='data/LPD/train/label_fullbody.txt',
