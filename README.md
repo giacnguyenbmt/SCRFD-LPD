@@ -50,6 +50,8 @@ Precision, flops and infer time are all evaluated on **VGA resolution**.
 
 ## Installation
 
+### Install with pip
+
 Please refer to [mmdetection](https://github.com/open-mmlab/mmdetection/blob/master/docs/en/get_started.md#installation) for installation.
 
   1. Install [mmcv](https://github.com/open-mmlab/mmcv). (mmcv-full==1.2.6 and 1.3.3 was tested)
@@ -60,20 +62,28 @@ Please refer to [mmdetection](https://github.com/open-mmlab/mmdetection/blob/mas
        pip install -v -e .  # or "python setup.py develop"
        ```
 
+### Build docker images
+
+Build with local repository.
+
+```bash
+docker build -t scrfd -f Dockerfile .
+```
+
 ## Data preparation
 
-### WIDERFace
+### LPD
 
-Download WIDERFace datasets and put it under `data/LPD`.
+Download LPD datasets and put it under `data/LPD`.
 
    ```bash
-     data/retinaface/
+     data/LPD/
          train/
              images/
-             labelv2.txt
+             label_fullbody.txt
          val/
              images/
-             labelv2.txt
+             label_fullbody.txt
              gt/
                  *.mat
              
@@ -81,7 +91,7 @@ Download WIDERFace datasets and put it under `data/LPD`.
 
 ### Annotation Format
 
-*please refer to labelv2.txt for detail*
+*please refer to label_fullbody.txt for detail*
 
 For each image:
 
@@ -106,6 +116,15 @@ Example training command, with 4 GPUs:
 CUDA_VISIBLE_DEVICES="0,1,2,3" PORT=29701 bash ./tools/dist_train.sh ./configs/scrfd/scrfd_1g.py 4
 ```
 
+Example training command, with 1 GPU:
+
+```bash
+python ./tools/train.py ./configs/scrfd_lpd/scrfd_lpd_500m_bnkps.py
+```
+
+---
+WIDERFace below
+
 ## WIDERFace Evaluation
 
 We use a pure python evaluation script without Matlab.
@@ -117,7 +136,7 @@ TASK=scrfd_2.5g
 CUDA_VISIBLE_DEVICES="$GPU" python -u tools/test_widerface.py ./configs/"$GROUP"/"$TASK".py ./work_dirs/"$TASK"/model.pth --mode 0 --out wouts
 ```
 
-## Pretrained-Models
+## Pretrained-Models on WIDERFace
 
 |      Name      | Easy  | Medium | Hard  | FLOPs | Params(M) | Infer(ms) | Link                                                         |
 | :------------: | ----- | ------ | ----- | ----- | --------- | --------- | ------------------------------------------------------------ |
