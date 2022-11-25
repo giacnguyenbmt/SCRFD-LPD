@@ -119,6 +119,13 @@ Example training command, with 1 GPU:
 python ./tools/train.py ./configs/scrfd_lpd/scrfd_lpd_500m_bnkps.py
 ```
 
+Example training command, with 1 GPU and optinal batch-size, num-worker:
+
+```bash
+python ./tools/train.py ./configs/scrfd_lpd/scrfd_lpd_500m_bnkps.py \
+--cfg-options data.samples_per_gpu=16 data.workers_per_gpu=8
+```
+
 ---
 WIDERFace below
 
