@@ -83,10 +83,7 @@ Download LPD datasets and put it under `data/LPD`.
              label_fullbody.txt
          val/
              images/
-             label_fullbody.txt
-             gt/
-                 *.mat
-             
+             label_fullbody.txt        
    ```
 
 ### Annotation Format
