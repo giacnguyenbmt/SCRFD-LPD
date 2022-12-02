@@ -17,8 +17,8 @@ class SCRFD(SingleStageDetector):
         super(SCRFD, self).__init__(backbone, neck, bbox_head, train_cfg,
                                   test_cfg, pretrained)
         # hunglm custom
-        self.mean = torch.as_tensor([127.5, 127.5, 127.5])[None, :, None, None]
-        self.std = torch.as_tensor([128.0, 128.0, 128.0])[None, :, None, None]
+        # self.mean = torch.as_tensor([127.5, 127.5, 127.5]).cuda()[None, :, None, None]
+        # self.std = torch.as_tensor([128.0, 128.0, 128.0]).cuda()[None, :, None, None]
 
     def forward_train(self,
                       img,
