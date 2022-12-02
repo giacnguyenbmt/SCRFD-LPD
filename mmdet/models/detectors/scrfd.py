@@ -66,7 +66,7 @@ class SCRFD(SingleStageDetector):
                 corresponds to each class.
         """
         # hunglm custom
-        img = img.sub(self.mean).div(self.std)
+        # img = img.sub(self.mean).div(self.std)
         x = self.extract_feat(img)
         outs = self.bbox_head(x)
         #print(len(outs))
