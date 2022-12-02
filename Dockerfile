@@ -15,8 +15,11 @@ RUN apt-get update && apt-get install -y libgl1 libglib2.0-0 \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
+ENV FORCE_CUDA="1"
+ENV MMCV_WITH_OPS="1"
+
 # Install mmcv-full
-ARG MMCV="1.3.3"
+ARG MMCV="1.2.6"
 RUN if [ "${MMCV}" = "" ]; then pip install -U openmim && mim install mmcv-full; else pip install -U openmim && mim install mmcv-full==${MMCV}; fi
 
 # Verify the installation
