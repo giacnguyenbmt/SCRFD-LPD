@@ -233,7 +233,7 @@ model = dict(
         out_channels=24,
         start_level=1,
         add_extra_convs='on_output',
-        num_outs=3),
+        num_outs=3), # <=============== NOTICE HERE=================
     bbox_head=dict(
         type='SCRFDHead',
         num_classes=1,
@@ -245,7 +245,7 @@ model = dict(
         cls_reg_share=True,
         strides_share=False,
         scale_mode=2,
-        anchor_generator=dict(
+        anchor_generator=dict( # <=============== NOTICE HERE=================
             type='AnchorGenerator',
             ratios=[1.0],
             scales = [1,2],
