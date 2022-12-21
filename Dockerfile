@@ -1,6 +1,6 @@
 ARG PYTORCH="1.8.1"
-ARG CUDA="10.2"
-ARG CUDNN="7"
+ARG CUDA="11.1"
+ARG CUDNN="8"
 
 FROM pytorch/pytorch:${PYTORCH}-cuda${CUDA}-cudnn${CUDNN}-devel
 
@@ -19,7 +19,7 @@ ENV FORCE_CUDA="1"
 ENV MMCV_WITH_OPS="1"
 
 # Install mmcv-full
-ARG MMCV="1.2.6"
+ARG MMCV="1.3.3"
 RUN if [ "${MMCV}" = "" ]; then pip install -U openmim && mim install mmcv-full; else pip install -U openmim && mim install mmcv-full==${MMCV}; fi
 
 # Verify the installation
@@ -31,4 +31,5 @@ RUN apt-get update && apt-get install -y git && git clone https://github.com/gia
     && pip install -r requirements/build.txt \
     && pip install -v -e . \
     && pip install -r requirements/optional.txt \
-    && pip install scipy
+    && pip install scipy \
+    && pip install pillow
