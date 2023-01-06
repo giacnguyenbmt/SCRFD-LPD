@@ -19,7 +19,7 @@ ENV FORCE_CUDA="1"
 ENV MMCV_WITH_OPS="1"
 
 # Install mmcv-full
-ARG MMCV="1.2.6"
+ARG MMCV="1.3.3"
 RUN if [ "${MMCV}" = "" ]; then pip install -U openmim && mim install mmcv-full; else pip install -U openmim && mim install mmcv-full==${MMCV}; fi
 
 # Verify the installation
