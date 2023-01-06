@@ -26,7 +26,7 @@ RUN if [ "${MMCV}" = "" ]; then pip install -U openmim && mim install mmcv-full;
 RUN python -c 'import mmcv;print(mmcv.__version__)'
 
 # Install SCRFD env
-RUN apt-get update && apt-get install -y git && git clone https://github.com/giacnguyenbmt/SCRFD-LPD.git \
+RUN apt-get update && apt-get install -y git && git clone -b scrfd-mmcv1.2.6 https://github.com/giacnguyenbmt/SCRFD-LPD.git \
     && cd SCRFD-LPD \
     && pip install -r requirements/build.txt \
     && pip install -v -e . \
